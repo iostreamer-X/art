@@ -4,7 +4,7 @@ defaultContentLanguage  = "en"
 isMultilingual          = false
 title                   = "iostreamer's art space"
 theme                   = "sam"
-pygmentsStyle           = "monokai"                     # https://help.farbox.com/pygments.html
+pygmentsStyle           = "native"                     # https://help.farbox.com/pygments.html
 pygmentsCodefences      = true
 # googleAnalytics         = ""             # Tracking code, eg. "UA-111111111-1"
 
@@ -31,7 +31,7 @@ pygmentsCodefences      = true
     text = "gallery"
 
 [[params.mainMenu]]
-    link = "/art/projects"
+    link = "/art/posts"
     text = "projects"
 
 [[params.mainMenu]]
