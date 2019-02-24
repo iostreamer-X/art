@@ -208,13 +208,12 @@ If you have worked with Neural Networks, you'd know the concept of weights and h
 almost random.
 The numbers above might look like weights which have been set by a complex network after several dozens of iterations. And in fact they have been, it's 
 just, the complex network is me this time. I sat down and played with the code, rendering after each experiment with different variables and then I chose,
-what looked to me, like **Order**.
-And the I played again, and chose what looked like ***Chaos***
+what looked to me, like **Order** and ***Chaos***
 
 <br>
 
 I am not sure what the takeaway should be, but I think what I wanted to tell was that I believe the best machine to create art will always be human mind.
-All we need to do venture out, in the terra incognita of code and ideas.
+All we need to do is venture out, in the terra incognita of code and ideas.
 
 <br>
 
