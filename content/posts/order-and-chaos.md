@@ -25,16 +25,16 @@ Armed with this knowledge, I laid down the plan to create the jitter effect.
 I will randomly choose a point(`X1`) on the line(`l1`), find the line perpendicular to the given line(`l2`), choose a random point(`X`) based on given maximum height on this perpendicular line, and the point I chose on my original line(`X1`) will get shifted to this new point(`X`).
 
 ```
-l1                                  After shifting 
-.                                   .
-.                                   .
-.                                   .
-.                                   .
-X1 . X . . . . l2                      .
-.                                   .
-.                                   .
-.                                   .
-.                                   .
+l1                    After shifting 
+.                     .
+.                     .
+.                     .
+.                     .
+X1 . X . . . . l2        .
+.                     .
+.                     .
+.                     .
+.                     .
 ```
 
 <br>
