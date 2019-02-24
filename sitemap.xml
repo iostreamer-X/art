@@ -8,6 +8,10 @@
   </url>
   
   <url>
+    <loc>/art/gallery/</loc>
+  </url>
+  
+  <url>
     <loc>/art/categories/</loc>
     <priority>0</priority>
   </url>
