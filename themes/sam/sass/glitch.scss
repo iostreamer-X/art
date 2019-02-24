@@ -36,12 +36,14 @@
     &:after {
       left: 8px;
       text-shadow: -1px 0 $highlightColor1;
-      animation: #{$name}-anim-1 2s infinite linear alternate-reverse;
+      animation: #{$name}-anim-1 15s infinite linear alternate-reverse;
+      animation-delay: 3s
     }
     &:before {
       left: -8px;
       text-shadow: 2px 0 $highlightColor2; 
-      animation: #{$name}-anim-2 3s infinite linear alternate-reverse;
+      animation: #{$name}-anim-2 20s infinite linear alternate-reverse;
+      animation-delay: 3s
     }
     
   }
