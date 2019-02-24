@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/art/posts/order-and-chaos/</loc>
+    <lastmod>2019-02-24T19:00:35+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>/art/about/</loc>
     <lastmod>2019-02-24T17:13:23+05:30</lastmod>
   </url>
@@ -12,18 +17,36 @@
   </url>
   
   <url>
+    <loc>/art/tags/blog/</loc>
+    <lastmod>2019-02-24T19:00:35+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/art/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>/art/posts/</loc>
+    <lastmod>2019-02-24T19:00:35+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/art/tags/story/</loc>
+    <lastmod>2019-02-24T19:00:35+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/art/tags/</loc>
+    <lastmod>2019-02-24T19:00:35+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/art/</loc>
-    <lastmod>2019-02-24T17:13:23+05:30</lastmod>
+    <lastmod>2019-02-24T19:00:35+05:30</lastmod>
     <priority>0</priority>
   </url>
   

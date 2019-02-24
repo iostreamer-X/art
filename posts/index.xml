@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>iostreamer&#39;s art space</title>
-    <link>/art/</link>
-    <description>Recent content on iostreamer&#39;s art space</description>
+    <title>Projects on iostreamer&#39;s art space</title>
+    <link>/art/posts/</link>
+    <description>Recent content in Projects on iostreamer&#39;s art space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 24 Feb 2019 19:00:35 +0530</lastBuildDate>
     
-	<atom:link href="/art/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/art/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,16 +20,6 @@
       <description>One can always find a shimmer of order in chaos. And order without chaos is a fallacy.
 I started with generative art by matt pearson and the first lesson was about creating lines on your own, add some variance and noise.
 This gave me the idea to create a line with jitter effect. To do so, I had to take a trip down 10th standard maths lane and remind myself equations of lines, parallel lines, perpendicular lines, equation of a circle and its parametric form.</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>/art/about/</link>
-      <pubDate>Sun, 24 Feb 2019 17:13:23 +0530</pubDate>
-      
-      <guid>/art/about/</guid>
-      <description>Over time, I have realized, code isn&amp;rsquo;t just 1s and 0s and technology isn&amp;rsquo;t just harbinger of wealth. It knows rythym, it can dance to it, it knows canvas and it can paint on it. All it needs is an artist.
-And with this slow epiphany, I come here to share my work, my learning and my progress.</description>
     </item>
     
   </channel>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<meta name="description" content="iostreamer&#39;s art space">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:domain" content="/art">
+
+<meta name="twitter:image" content="http://iostreamer.me/assets/images/io.jpg">
+<meta name="twitter:title" property="og:title" itemprop="title name" content="iostreamer&#39;s art space">
+<meta name="twitter:description" property="og:description" itemprop="description" content="iostreamer&#39;s art space">
+<meta name="og:type" content="website">
+<meta name="og:url" content="/art">
+<meta name="og:image" itemprop="image primaryImageOfPage" content="http://iostreamer.me/assets/images/io.jpg">
+<meta name="theme-color" content="#000000" />
+
+<link rel="shortcut icon" href="http://iostreamer.me/assets/images/io.jpg" id="favicon">
+<link rel="stylesheet" href="/art/css/style.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+
+    
+
+    
+    
+    
+    <title>
+        
+        Order and Chaos
+        
+    </title>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="section" id="title" data-text="Order and Chaos">Order and Chaos</div>
+
+        
+<div class="section" id="content">
+    Sun Feb 24, 2019 &#183; 1176 words
+    
+    <div class="tag-container">
+        
+        <span class="tag">
+            <a href="/art/tags/blog">
+                blog
+            </a>
+        </span>
+        
+        <span class="tag">
+            <a href="/art/tags/story">
+                story
+            </a>
+        </span>
+        
+    </div>
+    
+    <hr/>
+    <p>One can always find a shimmer of order in chaos.
+<br>
+And order without chaos is a fallacy.</p>
+
+<p><img src="/art/gallery/images/order.png" alt="Order" />
+<img src="/art/gallery/images/chaos.png" alt="Chaos" /></p>
+
+<p>I started with <code>generative art by matt pearson</code> and the first lesson was about
+creating lines on your own, add some variance and noise.</p>
+
+<p>This gave me the idea to create a line with jitter effect.
+To do so, I had to take a trip down 10th standard maths lane and
+remind myself equations of lines, parallel lines, perpendicular lines,
+equation of a circle and its parametric form.</p>
+
+<p>Armed with this knowledge, I laid down the plan to create the jitter effect.
+<br>
+I will randomly choose a point(<code>X1</code>) on the line(<code>l1</code>), find the line perpendicular to the given line(<code>l2</code>), choose a random point(<code>X</code>) based on given maximum height on this perpendicular line, and the point I chose on my original line(<code>X1</code>) will get shifted to this new point(<code>X</code>).</p>
+
+<pre><code>l1                                  After shifting 
+.                                   .
+.                                   .
+.                                   .
+.                                   .
+X1 . X . . . . l2                      .
+.                                   .
+.                                   .
+.                                   .
+.                                   .
+</code></pre>
+
+<p><br>
+And after handling some divide by 0 errors and other edge cases, here&rsquo;s the code I arrived at:</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">get_slope</span>(start_x, start_y, end_x, end_y):
+	<span style="color:#6ab825;font-weight:bold">if</span> end_x == start_x:
+		<span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">float</span>(<span style="color:#ed9d13">&#34;inf&#34;</span>)
+	<span style="color:#6ab825;font-weight:bold">return</span> (<span style="color:#24909d">float</span>(end_y - start_y) / (end_x - start_x))
+
+<span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">get_y_of_line</span>(start_x, start_y, end_x, end_y, x, slope = None, y = <span style="color:#3677a9">0</span>):
+	slope_to_use = get_slope(start_x, start_y, end_x, end_y) <span style="color:#6ab825;font-weight:bold">if</span> slope <span style="color:#6ab825;font-weight:bold">is</span> None <span style="color:#6ab825;font-weight:bold">else</span> slope
+	y_to_use = y <span style="color:#6ab825;font-weight:bold">if</span> slope_to_use == <span style="color:#24909d">float</span>(<span style="color:#ed9d13">&#34;inf&#34;</span>) <span style="color:#6ab825;font-weight:bold">else</span> -y <span style="color:#6ab825;font-weight:bold">if</span> slope_to_use == <span style="color:#24909d">float</span>(<span style="color:#ed9d13">&#34;-inf&#34;</span>) <span style="color:#6ab825;font-weight:bold">else</span> None 
+	<span style="color:#6ab825;font-weight:bold">if</span> y_to_use <span style="color:#6ab825;font-weight:bold">is</span> <span style="color:#6ab825;font-weight:bold">not</span> None:
+		<span style="color:#6ab825;font-weight:bold">return</span> start_y + y_to_use
+	<span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">round</span>(slope_to_use * (x - start_x) + start_y)
+
+<span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">jitteryLine</span>(start_x, start_y, end_x, end_y, max_height=<span style="color:#3677a9">3</span>, x_step=<span style="color:#3677a9">1</span>, y_step=<span style="color:#3677a9">1</span>, chance_threshold = <span style="color:#3677a9">40</span>):
+	y = start_y
+	x = start_x
+	slope = get_slope(start_x, start_y, end_x, end_y)
+	perpendicularSlope = -<span style="color:#3677a9">1</span>/slope <span style="color:#6ab825;font-weight:bold">if</span> slope != <span style="color:#3677a9">0.0</span> <span style="color:#6ab825;font-weight:bold">else</span> <span style="color:#24909d">float</span>(<span style="color:#ed9d13">&#34;inf&#34;</span>)
+	
+	start = start_x
+	end = end_x - x_step + <span style="color:#3677a9">1</span>
+
+	<span style="color:#6ab825;font-weight:bold">if</span> start == end:
+		end = end + <span style="color:#3677a9">1</span>
+
+	<span style="color:#6ab825;font-weight:bold">if</span> end &lt; start:
+		start, end = end, start
+	
+	<span style="color:#6ab825;font-weight:bold">for</span> scan_x <span style="color:#6ab825;font-weight:bold">in</span> <span style="color:#24909d">range</span>(start, end, x_step):
+		next_straight_x = scan_x + x_step
+		next_straight_y = get_y_of_line(start_x, start_y, end_x, end_y, next_straight_x, slope)
+		
+		next_x = next_straight_x
+		next_y = next_straight_y
+	
+		chance = random(<span style="color:#3677a9">90</span>) + <span style="color:#3677a9">10</span>
+		<span style="color:#6ab825;font-weight:bold">if</span> chance &lt; chance_threshold:
+			random_height = random(<span style="color:#3677a9">2</span>*max_height) - max_height
+			<span style="color:#6ab825;font-weight:bold">if</span> perpendicularSlope != <span style="color:#24909d">float</span>(<span style="color:#ed9d13">&#34;inf&#34;</span>) <span style="color:#6ab825;font-weight:bold">and</span> perpendicularSlope != <span style="color:#24909d">float</span>(<span style="color:#ed9d13">&#34;-inf&#34;</span>):
+				next_x = next_straight_x + random_height
+			next_y = get_y_of_line(next_straight_x, next_straight_y, None, None, next_x, perpendicularSlope, random_height)
+
+		line(x, y, next_x, next_y)
+		y = next_y
+		x = next_x</code></pre></div>
+<p><br>
+And now that I had a framework to create jittery line, I could create jittery anything, since fundamentally,
+everything can be created with a line, after all, a circle is a polygon with infinite edges.</p>
+
+<p>Creating a jittery circle was no issue, use the parametric form of circle&rsquo;s equation and create tiny jittery lines, and when done
+you would have created a jittery circle.</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">jitteryCircle</span>(center_x, center_y, radius, turns = <span style="color:#3677a9">1</span>):
+	x = None
+	y = None
+	<span style="color:#6ab825;font-weight:bold">for</span> angle <span style="color:#6ab825;font-weight:bold">in</span> <span style="color:#24909d">range</span>(<span style="color:#3677a9">0</span>, (<span style="color:#3677a9">360</span> * turns) + <span style="color:#3677a9">1</span>) :
+		next_x = <span style="color:#24909d">int</span>(<span style="color:#24909d">round</span>(center_x + radius*math.cos(radians(angle))))
+		next_y = <span style="color:#24909d">int</span>(<span style="color:#24909d">round</span>(center_y + radius*math.sin(radians(angle))))
+		<span style="color:#6ab825;font-weight:bold">if</span> x <span style="color:#6ab825;font-weight:bold">is</span> None <span style="color:#6ab825;font-weight:bold">or</span> y <span style="color:#6ab825;font-weight:bold">is</span> None:
+			x = next_x
+			y = next_y
+			<span style="color:#6ab825;font-weight:bold">continue</span>
+		jitteryLine(x, y, next_x, next_y)
+		x = next_x
+		y = next_y</code></pre></div>
+<p><br>
+<br></p>
+
+<p>One important thing I learnt in <code>matt pearson</code>&rsquo;s book was that once you have a framework, start playing, amplify.
+And that&rsquo;s exactly what I did. That <code>turns</code> argument in <code>jitteryCircle</code> controls how many times it should draw the circle.
+But what&rsquo;s the point, it would be drawing circles over the previous one, and it would appear as if only one circle is present.
+But what if, with each turn, radius increased, randomly? What if, with each iteration, the color gradient changed? What if, with each iteration,
+the jitter effect increased?
+Well you get the idea. After creating a base framework, we need to ask such bizzare question, and I believe, no question is bizarre enough when it comes
+to genrative art.</p>
+
+<p><br>
+After toying with colors, jitter and iterations, I came up with this code:</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6ab825;font-weight:bold">import</span> <span style="color:#447fcf;text-decoration:underline">math</span>
+
+<span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">get_slope</span>(start_x, start_y, end_x, end_y):
+	<span style="color:#6ab825;font-weight:bold">if</span> end_x == start_x:
+		<span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">float</span>(<span style="color:#ed9d13">&#34;inf&#34;</span>)
+	<span style="color:#6ab825;font-weight:bold">return</span> (<span style="color:#24909d">float</span>(end_y - start_y) / (end_x - start_x))
+
+<span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">get_y_of_line</span>(start_x, start_y, end_x, end_y, x, slope = None, y = <span style="color:#3677a9">0</span>):
+	slope_to_use = get_slope(start_x, start_y, end_x, end_y) <span style="color:#6ab825;font-weight:bold">if</span> slope <span style="color:#6ab825;font-weight:bold">is</span> None <span style="color:#6ab825;font-weight:bold">else</span> slope
+	y_to_use = y <span style="color:#6ab825;font-weight:bold">if</span> slope_to_use == <span style="color:#24909d">float</span>(<span style="color:#ed9d13">&#34;inf&#34;</span>) <span style="color:#6ab825;font-weight:bold">else</span> -y <span style="color:#6ab825;font-weight:bold">if</span> slope_to_use == <span style="color:#24909d">float</span>(<span style="color:#ed9d13">&#34;-inf&#34;</span>) <span style="color:#6ab825;font-weight:bold">else</span> None 
+	<span style="color:#6ab825;font-weight:bold">if</span> y_to_use <span style="color:#6ab825;font-weight:bold">is</span> <span style="color:#6ab825;font-weight:bold">not</span> None:
+		<span style="color:#6ab825;font-weight:bold">return</span> start_y + y_to_use
+	<span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">round</span>(slope_to_use * (x - start_x) + start_y)
+
+<span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">jitteryLine</span>(start_x, start_y, end_x, end_y, max_height=<span style="color:#3677a9">3</span>, x_step=<span style="color:#3677a9">1</span>, y_step=<span style="color:#3677a9">1</span>, chance_threshold = <span style="color:#3677a9">40</span>, iteration = <span style="color:#3677a9">1</span>):
+	y = start_y
+	x = start_x
+	slope = get_slope(start_x, start_y, end_x, end_y)
+	perpendicularSlope = -<span style="color:#3677a9">1</span>/slope <span style="color:#6ab825;font-weight:bold">if</span> slope != <span style="color:#3677a9">0.0</span> <span style="color:#6ab825;font-weight:bold">else</span> <span style="color:#24909d">float</span>(<span style="color:#ed9d13">&#34;inf&#34;</span>)
+	
+	start = start_x
+	end = end_x - x_step + <span style="color:#3677a9">1</span>
+
+	<span style="color:#6ab825;font-weight:bold">if</span> start == end:
+		end = end + <span style="color:#3677a9">1</span>
+
+	<span style="color:#6ab825;font-weight:bold">if</span> end &lt; start:
+		start, end = end, start
+	
+	<span style="color:#6ab825;font-weight:bold">for</span> scan_x <span style="color:#6ab825;font-weight:bold">in</span> <span style="color:#24909d">range</span>(start, end, x_step):
+		next_straight_x = scan_x + x_step
+		next_straight_y = get_y_of_line(start_x, start_y, end_x, end_y, next_straight_x, slope)
+		
+		next_x = next_straight_x
+		next_y = next_straight_y
+	
+		chance = random(<span style="color:#3677a9">90</span>) + <span style="color:#3677a9">10</span>
+		<span style="color:#6ab825;font-weight:bold">if</span> chance &lt; chance_threshold:
+			random_height = random(<span style="color:#3677a9">2</span>*max_height) - max_height
+			<span style="color:#6ab825;font-weight:bold">if</span> perpendicularSlope != <span style="color:#24909d">float</span>(<span style="color:#ed9d13">&#34;inf&#34;</span>) <span style="color:#6ab825;font-weight:bold">and</span> perpendicularSlope != <span style="color:#24909d">float</span>(<span style="color:#ed9d13">&#34;-inf&#34;</span>):
+				next_x = next_straight_x + random_height
+			next_y = get_y_of_line(next_straight_x, next_straight_y, None, None, next_x, perpendicularSlope, random_height)
+
+		line(x, y, next_x, next_y)
+		y = next_y
+		x = next_x
+
+		stroke(<span style="color:#24909d">map</span>(noise(iteration), <span style="color:#3677a9">0</span>, <span style="color:#3677a9">1</span>, <span style="color:#3677a9">80</span> - iteration, <span style="color:#3677a9">160</span> - iteration), <span style="color:#24909d">map</span>(noise(iteration), <span style="color:#3677a9">0</span>, <span style="color:#3677a9">1</span>, <span style="color:#3677a9">0</span> + iteration, <span style="color:#3677a9">0</span> + iteration), <span style="color:#24909d">map</span>(noise(iteration), <span style="color:#3677a9">0</span>, <span style="color:#3677a9">1</span>, <span style="color:#3677a9">0</span> + iteration*<span style="color:#3677a9">1.8</span>, <span style="color:#3677a9">0</span> + iteration*<span style="color:#3677a9">1.8</span>), <span style="color:#24909d">map</span>(noise(iteration), <span style="color:#3677a9">0</span>, <span style="color:#3677a9">1</span>, <span style="color:#3677a9">0</span> + iteration*<span style="color:#3677a9">1.2</span>, <span style="color:#3677a9">0</span> + iteration*<span style="color:#3677a9">1.2</span>))
+
+<span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">jitteryCircle</span>(center_x, center_y, radius, turns = <span style="color:#3677a9">1</span>, iteration = <span style="color:#3677a9">1</span>):
+	x = None
+	y = None
+	<span style="color:#6ab825;font-weight:bold">for</span> angle <span style="color:#6ab825;font-weight:bold">in</span> <span style="color:#24909d">range</span>(<span style="color:#3677a9">0</span>, (<span style="color:#3677a9">360</span> * turns) + <span style="color:#3677a9">1</span>) :
+		next_x = <span style="color:#24909d">int</span>(<span style="color:#24909d">round</span>(center_x + radius*math.cos(radians(angle))))
+		next_y = <span style="color:#24909d">int</span>(<span style="color:#24909d">round</span>(center_y + radius*math.sin(radians(angle))))
+		<span style="color:#6ab825;font-weight:bold">if</span> x <span style="color:#6ab825;font-weight:bold">is</span> None <span style="color:#6ab825;font-weight:bold">or</span> y <span style="color:#6ab825;font-weight:bold">is</span> None:
+			x = next_x
+			y = next_y
+			<span style="color:#6ab825;font-weight:bold">continue</span>
+		max_height = <span style="color:#24909d">map</span>(noise(angle), <span style="color:#3677a9">0</span>, <span style="color:#3677a9">1</span>, <span style="color:#3677a9">3</span>, <span style="color:#3677a9">8</span>)
+		jitteryLine(x, y, next_x, next_y, max_height=max_height, iteration=iteration)
+		x = next_x
+		y = next_y
+		radius += <span style="color:#3677a9">0.004</span>
+
+
+background(<span style="color:#3677a9">255</span>)
+size(<span style="color:#3677a9">3110</span>, <span style="color:#3677a9">3110</span>)
+stroke(<span style="color:#3677a9">64</span>,<span style="color:#3677a9">167</span>,<span style="color:#3677a9">224</span>)
+strokeWeight(<span style="color:#3677a9">1</span>)	
+radius = <span style="color:#3677a9">10</span>
+distance = <span style="color:#3677a9">840</span>
+
+<span style="color:#6ab825;font-weight:bold">for</span> iteration <span style="color:#6ab825;font-weight:bold">in</span> <span style="color:#24909d">range</span>(<span style="color:#3677a9">1</span>, <span style="color:#3677a9">160</span>):
+	strokeWeight(<span style="color:#24909d">map</span>(noise(iteration), <span style="color:#3677a9">0</span>, <span style="color:#3677a9">1</span>, <span style="color:#3677a9">1</span>, <span style="color:#3677a9">1.2</span>))
+	jitteryCircle(width/<span style="color:#3677a9">2</span>, height/<span style="color:#3677a9">2</span>, radius + <span style="color:#24909d">map</span>(noise(iteration), <span style="color:#3677a9">0</span>, <span style="color:#3677a9">1</span>, radius*iteration*<span style="color:#3677a9">0.7</span>, radius*iteration), <span style="color:#3677a9">15</span>, iteration=iteration*<span style="color:#3677a9">0.4</span>)
+
+saveFrame(<span style="color:#ed9d13">&#34;screen-####.png&#34;</span>)</code></pre></div>
+<p>If you have worked with Neural Networks, you&rsquo;d know the concept of weights and how they are set after iterations of learning, and how they look
+almost random.
+The numbers above might look like weights which have been set by a complex network after several dozens of iterations. And in fact they have been, it&rsquo;s
+just, the complex network is me this time. I sat down and played with the code, rendering after each experiment with different variables and then I chose,
+what looked to me, like <strong>Order</strong>.
+And the I played again, and chose what looked like <strong><em>Chaos</em></strong></p>
+
+<p><br></p>
+
+<p>I am not sure what the takeaway should be, but I think what I wanted to tell was that I believe the best machine to create art will always be human mind.
+All we need to do venture out, in the terra incognita of code and ideas.</p>
+
+<p><br></p>
+
+<p><em>There might not be new lands to discover and explore for our generation, but we have something else, something more, something infinite to explore.</em></p>
+
+</div>
+
+
+        
+<div class="section bottom-menu">
+    
+<hr />
+<p>
+
+
+    
+        <a href="/art/posts">back</a>
+        
+            &#183;
+        
+    
+
+    
+        
+            <a href="/art/gallery">
+                gallery
+            </a>
+        
+    
+    
+        
+            &#183; 
+            <a href="/art/posts">
+                projects
+            </a>
+        
+            &#183; 
+            <a href="/art/about">
+                about
+            </a>
+        
+    
+    &#183; 
+    <a href="/art">
+        main
+    </a>
+
+</p>
+</div>
+
+
+        <div class="section footer">ideas are bulletproof</div>
+    </div>
+</body>
+
+</html>

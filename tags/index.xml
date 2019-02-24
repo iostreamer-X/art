@@ -6,9 +6,28 @@
     <description>Recent content in Tags on iostreamer&#39;s art space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 24 Feb 2019 19:00:35 +0530</lastBuildDate>
     
 	<atom:link href="/art/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Blog</title>
+      <link>/art/tags/blog/</link>
+      <pubDate>Sun, 24 Feb 2019 19:00:35 +0530</pubDate>
+      
+      <guid>/art/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Story</title>
+      <link>/art/tags/story/</link>
+      <pubDate>Sun, 24 Feb 2019 19:00:35 +0530</pubDate>
+      
+      <guid>/art/tags/story/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
