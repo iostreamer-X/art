@@ -8,18 +8,18 @@
   </url>
   
   <url>
-    <loc>/art/</loc>
-    <lastmod>2019-02-24T17:13:23+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/art/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/art/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/art/</loc>
+    <lastmod>2019-02-24T17:13:23+05:30</lastmod>
     <priority>0</priority>
   </url>
   
