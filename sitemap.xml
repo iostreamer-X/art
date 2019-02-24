@@ -3,7 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/art/about/</loc>
+    <lastmod>2019-02-24T17:13:23+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>/art/</loc>
+    <lastmod>2019-02-24T17:13:23+05:30</lastmod>
     <priority>0</priority>
   </url>
   
