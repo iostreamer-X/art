@@ -22,7 +22,7 @@ pygmentsCodefences      = true
     footerText          = "ideas are bulletproof"
 
 # Metadata
-    description         = "A new Hugo site."            # Max 160 characters show in search results
+    description         = "iostreamer's art space"            # Max 160 characters show in search results
     twitterCard         = "summary_large_image"         # Card value “summary”, “summary_large_image”, “app”, or “player”
     primaryImage        = "http://iostreamer.me/assets/images/io.jpg"                     # Image that shows on Twitter cards and OpenGraph links
 
