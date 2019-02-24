@@ -2,7 +2,7 @@ baseurl                 = "/art"               # Your domain name. Must end with
 languageCode            = "en-us"
 defaultContentLanguage  = "en"
 isMultilingual          = false
-title                   = "Call me Sam"
+title                   = "iostreamer's art space"
 theme                   = "sam"
 pygmentsStyle           = "monokai"                     # https://help.farbox.com/pygments.html
 pygmentsCodefences      = true
@@ -11,7 +11,7 @@ pygmentsCodefences      = true
 [params]
     dateform            = "Mon Jan 02, 2006"
     dateformfull        = "Mon Jan 2 2006 15:04:05 EST"
-    favicon             = "sam.ico"
+    favicon             = "http://iostreamer.me/assets/images/io.jpg"
     homepage            = "main"                        # What to call the home page link
     galleryFolder       = "images/"                     # Where you've put your images, after "/content/gallery/"
     clickablePhotos     = false                          # Allow links to the full size images
@@ -24,7 +24,7 @@ pygmentsCodefences      = true
 # Metadata
     description         = "A new Hugo site."            # Max 160 characters show in search results
     twitterCard         = "summary_large_image"         # Card value “summary”, “summary_large_image”, “app”, or “player”
-    primaryImage        = "tn.png"                     # Image that shows on Twitter cards and OpenGraph links
+    primaryImage        = "http://iostreamer.me/assets/images/io.jpg"                     # Image that shows on Twitter cards and OpenGraph links
 
 [[params.mainMenu]]
     link = "/art/gallery"
