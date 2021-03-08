@@ -1,15 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog on iostreamer&#39;s art space</title>
+    <title>blog on iostreamer&#39;s art space</title>
     <link>/art/tags/blog/</link>
-    <description>Recent content in Blog on iostreamer&#39;s art space</description>
+    <description>Recent content in blog on iostreamer&#39;s art space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Feb 2019 19:00:35 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 08 Mar 2021 19:00:35 +0530</lastBuildDate>
     
 	<atom:link href="/art/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Attraction</title>
+      <link>/art/posts/attraction/</link>
+      <pubDate>Mon, 08 Mar 2021 19:00:35 +0530</pubDate>
+      
+      <guid>/art/posts/attraction/</guid>
+      <description>And we are back. It has been 2 years, a lot has changed, except for my generative art skills. Still learning the ropes. I started looking into attractors but got distracted and rather started watching The Coding Train&amp;rsquo;s Gravitational Force video.
+I prepared a similar setup, and the idea was to add a lot of objects and see if it produces anything interesting. No dice.
+Of course, just because there is a lot of flying stuff doesn&amp;rsquo;t mean it&amp;rsquo;s &amp;ldquo;art&amp;rdquo;, I said to myself.</description>
+    </item>
     
     <item>
       <title>Order and Chaos</title>

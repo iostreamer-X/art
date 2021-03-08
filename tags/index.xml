@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on iostreamer&#39;s art space</title>
@@ -6,24 +6,24 @@
     <description>Recent content in Tags on iostreamer&#39;s art space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Feb 2019 19:00:35 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 08 Mar 2021 19:00:35 +0530</lastBuildDate>
     
 	<atom:link href="/art/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Blog</title>
+      <title>blog</title>
       <link>/art/tags/blog/</link>
-      <pubDate>Sun, 24 Feb 2019 19:00:35 +0530</pubDate>
+      <pubDate>Mon, 08 Mar 2021 19:00:35 +0530</pubDate>
       
       <guid>/art/tags/blog/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Story</title>
+      <title>story</title>
       <link>/art/tags/story/</link>
-      <pubDate>Sun, 24 Feb 2019 19:00:35 +0530</pubDate>
+      <pubDate>Mon, 08 Mar 2021 19:00:35 +0530</pubDate>
       
       <guid>/art/tags/story/</guid>
       <description></description>

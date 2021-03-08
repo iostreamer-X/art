@@ -47,7 +47,7 @@
 
         
 <div class="section" id="content">
-    Sun Feb 24, 2019 &#183; 1168 words
+    Sun Feb 24, 2019 &#183; 1155 words
     
     <div class="tag-container">
         
@@ -67,24 +67,19 @@
     
     <hr/>
     <p>One can always find a shimmer of order in chaos.
-<br>
+<!-- raw HTML omitted -->
 And order without chaos is a fallacy.</p>
-
-<p><img src="/art/gallery/images/order.png" alt="Order" />
-<img src="/art/gallery/images/chaos.png" alt="Chaos" /></p>
-
+<p><img src="/art/gallery/images/order.png" alt="Order">
+<img src="/art/gallery/images/chaos.png" alt="Chaos"></p>
 <p>I started with <code>generative art by matt pearson</code> and the first lesson was about
 creating lines on your own, add some variance and noise.</p>
-
 <p>This gave me the idea to create a line with jitter effect.
 To do so, I had to take a trip down 10th standard maths lane and
 remind myself equations of lines, parallel lines, perpendicular lines,
 equation of a circle and its parametric form.</p>
-
 <p>Armed with this knowledge, I laid down the plan to create the jitter effect.
-<br>
-I will randomly choose a point(<code>X1</code>) on the line(<code>l1</code>), find the line perpendicular to the given line(<code>l2</code>), choose a random point(<code>X</code>) based on given maximum height on this perpendicular line, and the point I chose on my original line(<code>X1</code>) will get shifted to this new point(<code>X</code>).</p>
-
+<!-- raw HTML omitted --></p>
+<p>I will randomly choose a point(<code>X1</code>) on the line(<code>l1</code>), find the line perpendicular to the given line(<code>l2</code>), choose a random point(<code>X</code>) based on given maximum height on this perpendicular line, and the point I chose on my original line(<code>X1</code>) will get shifted to this new point(<code>X</code>).</p>
 <pre><code>l1                    After shifting 
 .                     .
 .                     .
@@ -95,10 +90,8 @@ X1 . X . . . . l2        .
 .                     .
 .                     .
 .                     .
-</code></pre>
-
-<p><br>
-And after handling some divide by 0 errors and other edge cases, here&rsquo;s the code I arrived at:</p>
+</code></pre><!-- raw HTML omitted -->
+<p>And after handling some divide by 0 errors and other edge cases, here&rsquo;s the code I arrived at:</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">get_slope</span>(start_x, start_y, end_x, end_y):
 	<span style="color:#6ab825;font-weight:bold">if</span> end_x == start_x:
 		<span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">float</span>(<span style="color:#ed9d13">&#34;inf&#34;</span>)
@@ -142,11 +135,10 @@ And after handling some divide by 0 errors and other edge cases, here&rsquo;s th
 
 		line(x, y, next_x, next_y)
 		y = next_y
-		x = next_x</code></pre></div>
-<p><br>
-And now that I had a framework to create jittery line, I could create jittery anything, since fundamentally,
+		x = next_x
+</code></pre></div><!-- raw HTML omitted -->
+<p>And now that I had a framework to create jittery line, I could create jittery anything, since fundamentally,
 everything can be created with a line, after all, a circle is a polygon with infinite edges.</p>
-
 <p>Creating a jittery circle was no issue, use the parametric form of circle&rsquo;s equation and create tiny jittery lines, and when done
 you would have created a jittery circle.</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">jitteryCircle</span>(center_x, center_y, radius, turns = <span style="color:#3677a9">1</span>):
@@ -161,20 +153,16 @@ you would have created a jittery circle.</p>
 			<span style="color:#6ab825;font-weight:bold">continue</span>
 		jitteryLine(x, y, next_x, next_y)
 		x = next_x
-		y = next_y</code></pre></div>
-<p><br>
-<br></p>
-
-<p>One important thing I learnt in <code>matt pearson</code>&rsquo;s book was that once you have a framework, start playing, amplify.
+		y = next_y
+</code></pre></div><!-- raw HTML omitted -->
+<p>One important thing I learnt in <code>matt pearson</code>'s book was that once you have a framework, start playing, amplify.
 And that&rsquo;s exactly what I did. That <code>turns</code> argument in <code>jitteryCircle</code> controls how many times it should draw the circle.
 But what&rsquo;s the point, it would be drawing circles over the previous one, and it would appear as if only one circle is present.
 But what if, with each turn, radius increased, randomly? What if, with each iteration, the color gradient changed? What if, with each iteration,
 the jitter effect increased?
 Well you get the idea. After creating a base framework, we need to ask such bizzare question, and I believe, no question is bizarre enough when it comes
 to genrative art.</p>
-
-<p><br>
-After toying with colors, jitter and iterations, I came up with this code:</p>
+<!-- raw HTML omitted -->
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6ab825;font-weight:bold">import</span> <span style="color:#447fcf;text-decoration:underline">math</span>
 
 <span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">get_slope</span>(start_x, start_y, end_x, end_y):
@@ -252,20 +240,16 @@ distance = <span style="color:#3677a9">840</span>
 	strokeWeight(<span style="color:#24909d">map</span>(noise(iteration), <span style="color:#3677a9">0</span>, <span style="color:#3677a9">1</span>, <span style="color:#3677a9">1</span>, <span style="color:#3677a9">1.2</span>))
 	jitteryCircle(width/<span style="color:#3677a9">2</span>, height/<span style="color:#3677a9">2</span>, radius + <span style="color:#24909d">map</span>(noise(iteration), <span style="color:#3677a9">0</span>, <span style="color:#3677a9">1</span>, radius*iteration*<span style="color:#3677a9">0.7</span>, radius*iteration), <span style="color:#3677a9">15</span>, iteration=iteration*<span style="color:#3677a9">0.4</span>)
 
-saveFrame(<span style="color:#ed9d13">&#34;screen-####.png&#34;</span>)</code></pre></div>
-<p>If you have worked with Neural Networks, you&rsquo;d know the concept of weights and how they are set after iterations of learning, and how they look
+saveFrame(<span style="color:#ed9d13">&#34;screen-####.png&#34;</span>)
+</code></pre></div><p>If you have worked with Neural Networks, you&rsquo;d know the concept of weights and how they are set after iterations of learning, and how they look
 almost random.
 The numbers above might look like weights which have been set by a complex network after several dozens of iterations. And in fact they have been, it&rsquo;s
 just, the complex network is me this time. I sat down and played with the code, rendering after each experiment with different variables and then I chose,
-what looked to me, like <strong>Order</strong> and <strong><em>Chaos</em></strong></p>
-
-<p><br></p>
-
+what looked to me, like <strong>Order</strong> and <em><strong>Chaos</strong></em></p>
+<!-- raw HTML omitted -->
 <p>I am not sure what the takeaway should be, but I think what I wanted to tell was that I believe the best machine to create art will always be human mind.
 All we need to do is venture out, in the terra incognita of code and ideas.</p>
-
-<p><br></p>
-
+<!-- raw HTML omitted -->
 <p><em>There might not be new lands to discover and explore for our generation, but we have something else, something more, something infinite to explore.</em></p>
 
 </div>

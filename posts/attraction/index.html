@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<meta name="description" content="iostreamer&#39;s art space">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:domain" content="/art">
+
+<meta name="twitter:image" content="http://iostreamer.me/assets/images/io.jpg">
+<meta name="twitter:title" property="og:title" itemprop="title name" content="iostreamer&#39;s art space">
+<meta name="twitter:description" property="og:description" itemprop="description" content="iostreamer&#39;s art space">
+<meta name="og:type" content="website">
+<meta name="og:url" content="/art">
+<meta name="og:image" itemprop="image primaryImageOfPage" content="http://iostreamer.me/assets/images/io.jpg">
+<meta name="theme-color" content="#000000" />
+
+<link rel="shortcut icon" href="http://iostreamer.me/assets/images/io.jpg" id="favicon">
+<link rel="stylesheet" href="/art/css/style.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+
+    
+
+    
+    
+    
+    <title>
+        
+        Attraction
+        
+    </title>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="section" id="title" data-text="Attraction">Attraction</div>
+
+        
+<div class="section" id="content">
+    Mon Mar 08, 2021 &#183; 339 words
+    
+    <div class="tag-container">
+        
+        <span class="tag">
+            <a href="/art/tags/blog">
+                blog
+            </a>
+        </span>
+        
+        <span class="tag">
+            <a href="/art/tags/story">
+                story
+            </a>
+        </span>
+        
+    </div>
+    
+    <hr/>
+    <p>And we are back. It has been 2 years, a lot has changed, except for my generative art skills. Still learning the ropes.
+I started looking into attractors but got distracted and rather started watching <a href="https://www.youtube.com/watch?v=fML1KpvvQTc">The Coding Train&rsquo;s Gravitational Force video</a>.</p>
+<p>I prepared a similar setup, and the idea was to add a lot of objects and see if it produces anything interesting. No dice.</p>
+<p>Of course, just because there is a lot of flying stuff doesn&rsquo;t mean it&rsquo;s &ldquo;art&rdquo;, I said to myself. The next idea was again straight out of
+generative playbook. Map one dimension to a completely different, utterly unrelated dimension.</p>
+<p>And that worked!</p>
+<h2 id="process">Process</h2>
+<p>So we have a &lsquo;attractor&rsquo; which applies gravitational force on &lsquo;movers&rsquo;. This force(which is a 3d vector), then changes the movers&rsquo; acceleration, which in turn changes its velocity,
+which in turn changes its position(a 3d vector again).
+And if we were to update each mover&rsquo;s position according to applied force we&rsquo;d have a flying mess.</p>
+<p>But what if we keep the mover stationary(in space) but update its color rather(moving in RGB space). We have 3 dimensions for color(r,g,b) and we have a 3d position vector, seems fitting.</p>
+<h2 id="issues">Issues</h2>
+<p>I was working with mere 50k particles, and if each particle was to be treated like a pixel, those are not a lot of pixels.</p>
+<p>I tried a few tricks, and only one worked. So we have 50k particles(pixels) forming a square, let&rsquo;s take a few and shift them in space, but only odd pixels need to be shifted.
+This yield smaller tiles, but since they are more than 1 and take more space than a 50k cross square, it looks bigger.</p>
+<p>And here we have the results! Each one looks like something to me, so I have added those comments as well, while trying to sound as artistic as possible.</p>
+<hr>
+<h2 id="eternal-disco-ball">Eternal Disco Ball</h2>
+<p><img src="/art/gallery/post-images/c_anim_3.gif" alt=""></p>
+<hr>
+<h2 id="duality">Duality</h2>
+<p><img src="/art/gallery/post-images/c_anim_5.gif" alt=""></p>
+<hr>
+<h2 id="sunless-sky">Sunless Sky</h2>
+<p><img src="/art/gallery/post-images/c_anim_6.gif" alt=""></p>
+<hr>
+<h2 id="doesnt-look-like-anything-to-me">Doesn&rsquo;t look like anything to me</h2>
+<p><img src="/art/gallery/post-images/c_anim_7.gif" alt=""></p>
+<hr>
+<h2 id="ripple">Ripple</h2>
+<p><img src="/art/gallery/post-images/c_anim_8.gif" alt=""></p>
+<hr>
+<h2 id="cause-and-effect">Cause and Effect</h2>
+<p><img src="/art/gallery/post-images/c_anim_9.gif" alt=""></p>
+<hr>
+<h2 id="wednesday-thursday-friday-saturday">Wednesday, Thursday, Friday, Saturday</h2>
+<p><img src="/art/gallery/post-images/c_anim_12.gif" alt=""></p>
+<hr>
+<h2 id="entanglement">Entanglement</h2>
+<p><img src="/art/gallery/post-images/c_anim_13.gif" alt=""></p>
+<hr>
+<h2 id="revenge-of-the-ripple">Revenge of the Ripple</h2>
+<p><img src="/art/gallery/post-images/c_anim_14.gif" alt=""></p>
+<hr>
+<h2 id="cosmic-butthole">Cosmic Butthole</h2>
+<p><img src="/art/gallery/post-images/c_anim_17.gif" alt=""></p>
+<hr>
+<h2 id="fucking-global-warming">Fucking global warming</h2>
+<p><img src="/art/gallery/post-images/c_anim_18.gif" alt=""></p>
+<hr>
+<h2 id="flume">Flume</h2>
+<p><img src="/art/gallery/post-images/c_anim_22.gif" alt=""></p>
+<hr>
+<h2 id="disintegrate">Disintegrate</h2>
+<p><img src="/art/gallery/post-images/c_anim_23.gif" alt=""></p>
+<hr>
+
+</div>
+
+
+        
+<div class="section bottom-menu">
+    
+<hr />
+<p>
+
+
+    
+        <a href="/art/posts">back</a>
+        
+            &#183;
+        
+    
+
+    
+        
+            <a href="/art/gallery">
+                gallery
+            </a>
+        
+    
+    
+        
+            &#183; 
+            <a href="/art/posts">
+                projects
+            </a>
+        
+            &#183; 
+            <a href="/art/about">
+                about
+            </a>
+        
+    
+    &#183; 
+    <a href="/art">
+        main
+    </a>
+
+</p>
+</div>
+
+
+        <div class="section footer">ideas are bulletproof</div>
+    </div>
+</body>
+
+</html>
