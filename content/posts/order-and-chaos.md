@@ -22,7 +22,9 @@ equation of a circle and its parametric form.
 
 Armed with this knowledge, I laid down the plan to create the jitter effect.
 <br>
+
 I will randomly choose a point(`X1`) on the line(`l1`), find the line perpendicular to the given line(`l2`), choose a random point(`X`) based on given maximum height on this perpendicular line, and the point I chose on my original line(`X1`) will get shifted to this new point(`X`).
+
 
 ```
 l1                    After shifting 
@@ -38,7 +40,9 @@ X1 . X . . . . l2        .
 ```
 
 <br>
+
 And after handling some divide by 0 errors and other edge cases, here's the code I arrived at:
+
 ```python
 def get_slope(start_x, start_y, end_x, end_y):
 	if end_x == start_x:
@@ -87,6 +91,7 @@ def jitteryLine(start_x, start_y, end_x, end_y, max_height=3, x_step=1, y_step=1
 ```
 
 <br>
+
 And now that I had a framework to create jittery line, I could create jittery anything, since fundamentally,
 everything can be created with a line, after all, a circle is a polygon with infinite edges.
 
